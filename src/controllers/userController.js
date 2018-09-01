@@ -8,13 +8,16 @@ module.exports = {
 
     create(req, res, next){
         //#1
+        console.log("create a user");
+        console.log(JSON.stringify(req.body));
              let newUser = {
-                username: req.body.username,
+        username: req.body.username,
        email: req.body.email,
        password: req.body.password,
-       passwordConfirmation: req.body.passwordConfirmation
+      passwordConfirmation: req.body.password_conf
              };
         // #2
+        console.log(JSON.stringify(newUser));
              userQueries.createUser(newUser, (err, user) => {
                if(err){
                  req.flash("error", err);

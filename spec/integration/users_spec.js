@@ -30,17 +30,18 @@ describe("routes : users", () => {
     });
   });
 
-  describe("POST /users/sign_up", () => {
+  describe("POST /users", () => {
 
     // Confirm that a form with valid values creates a user. 
     it("should create a new user with valid values and redirect", (done) => {
 
       const options = {
-        url: `${base}sign_up`,
+        url: base,
         form: {
-	    username: "user_name",
+	        username: "user_name",
           email: "user@example.com",
-          password: "123456789"
+          password: "123456789",
+          password_conf: "123456789"
         }
       }
 
@@ -48,10 +49,10 @@ describe("routes : users", () => {
         (err, res, body) => {
 
           // Check the users table for a user with the given email and confirm ID  
+          console.log(err);
           User.findOne({where: {email: "user@example.com"}})
           .then((user) => {
-            // expect(user).not.toBeNull();  
-            // expect(user.username).toBe("user_name");
+            expect(user).not.toBeNull();  
             expect(user.email).toBe("user@example.com");
             expect(user.id).toBe(1);
             done(); 
@@ -68,15 +69,15 @@ describe("routes : users", () => {
     it("should not create a new user with invalid attributes and redirect", (done) => {
       request.post(
         {
-          url: `${base}sign_up`,
+          url: base,
           form: {
 	        username: "wrong_user",
-            email: "wrong_user@example.com",
-            password: "123456789"
+            email: "wrong",
+            password: "12345678910"
           }
         },
         (err, res, body) => {
-          User.findOne({where: {email: "wrong_user@example.com"}})
+          User.findOne({where: {email: "wrong"}})
           .then((user) => {
             expect(user).toBeNull();
             done();
