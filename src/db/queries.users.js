@@ -17,6 +17,7 @@ module.exports = {
         username: newUser.username,
       email: newUser.email,
       password: hashedPassword
+      
     })
     .then((user) => {
 

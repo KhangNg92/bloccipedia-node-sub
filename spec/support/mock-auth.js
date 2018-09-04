@@ -5,15 +5,16 @@ module.exports = {
   
   
       function middleware(req,res,next){
-  
+        role = req.body.role || role;
         id = req.body.userId || id;
         email = req.body.email || email;
   
         if(id && id != 0){
           req.user = {
+            "role": role,
             "id": id,
             "email": email,
-          
+            
           };
         } else if(id == 0) {
           delete req.user;
