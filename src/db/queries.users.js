@@ -23,9 +23,9 @@ module.exports = {
 
       const msg = {
         to: newUser.email,
-        from: 'donotreply@blocipedia.com',
+        from: 'Khang@blocipedia.com',
         subject: 'Welcome to Blocipedia',
-        text: 'Thank you for joining Blocipedia. To start contributing to the Wiki community please visit the site and login with the user information you provided. Looking forward to collaborating with you! - The Blocipedia Team',
+        text: "Hi there, this is Khang from Blocipedia, it's my pleasure to have you as a new user on this Wikis community. Enjoy",
         html: 'Thank you for Joining Blocipedia. To start contributing to the Wiki community please visit the site and login with the user information you provided.<br>Looking forward to collaborting with you!<br><br>-The Blocipedia Team',
         };
         sgMail.send(msg);
